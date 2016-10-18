@@ -5,7 +5,7 @@ var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
 mongoose.Promise = global.Promise
 
-if(process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
   // heroku mongoose connection
   mongoose.connect('mongodb://Dnton:heaven88@ds027295.mlab.com:27295/project2')
 } else {
