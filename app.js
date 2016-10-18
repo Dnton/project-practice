@@ -4,7 +4,14 @@ var layout = require('express-ejs-layouts')
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost/project-practice')
+
+if(process.env.NODE_ENV === 'production') {
+  // heroku mongoose connection
+  mongoose.connect('mongodb://Dnton:heaven88@ds027295.mlab.com:27295/project2')
+} else {
+  // local server
+  mongoose.connect('mongodb://localhost/project-practice')
+}
 
 app.set('view engine', 'ejs')
 app.use(layout)
@@ -19,6 +26,18 @@ var apiUsersRoute = require('./routes/users_api')
 
 app.use('/users', usersRoute) // only render ejs files
 app.use('/api/users', apiUsersRoute) // only handle ajax request
+
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+  app.use(function (err, req, res, next) {
+    res.status(err.status || 500)
+    res.render('error', {
+      message: err.message,
+      error: err
+    })
+  })
+}
 
 // app.listen(3000)
 app.listen(process.env.PORT || 3000)
