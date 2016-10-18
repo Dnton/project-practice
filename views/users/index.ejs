@@ -1,0 +1,22 @@
+<h2>USERNAMES HERE</h2>
+<form class="new-user">
+  <div class="row">
+    <div class="six columns">
+      <input type="text" name="user[name]" id="user-name" placeholder="Your username" class="u-full-width">
+    </div>
+    <div class="six columns">
+      <input type="text" name="user[password]" id="user-email" placeholder="Your email" class="u-full-width">
+    </div>
+    <div class="six columns">
+      <input type="text" name="user[email]" id="user-password" placeholder="Your password" class="u-full-width">
+    </div>
+    <input type="submit" value='Create New User'>
+  </div>
+</form>
+
+
+<% allUsers.forEach(function(user) { %>
+  <li><%= user.name %></li>
+  <li><%= user.email %></li>
+  <li><%= user.password %></li>
+<% }) %>
