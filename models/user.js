@@ -1,13 +1,16 @@
 var mongoose = require('mongoose')
 var bcrypt = require('bcrypt')
 
-
 var userSchema = new mongoose.Schema({
   local: {
     name: String,
     email: String,
     password: String
-  }
+  },
+  post: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Post'
+  }]
 })
 
 userSchema.pre('save', function (next) {

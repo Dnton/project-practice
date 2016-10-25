@@ -6,10 +6,10 @@ var User = require('../models/user')
 var Post = require('../models/post')
 
 router.get('/post', function (req, res){
-  User.find({}, function(err, allUsers) {
-    console.log(allUsers)
-    res.render('users/index', {
-      allUsers: allUsers
+  Post.find({}, function(err, allPost) {
+    console.log(allPosts)
+    res.render('post/profile', {
+      allPosts: allPosts
     })
   })
 })
