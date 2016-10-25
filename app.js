@@ -7,16 +7,16 @@ var passport = require('passport')
 var dotenv = require('dotenv')
 mongoose.Promise = global.Promise
 
-dotenv.load({path: '.env' + process.env.NODE_ENV})
-mongoose.connect(process.env.MONGO_URL)
+// dotenv.load({path: '.env' + process.env.NODE_ENV})
+// mongoose.connect(process.env.MONGO_URL)
 
-// if (process.env.NODE_ENV === 'production') {
-//   // heroku mongoose connection
-//   mongoose.connect('mongodb://Dnton:heaven88@ds027295.mlab.com:27295/project2')
-// } else {
-//   // local server
-//   mongoose.connect('mongodb://localhost/project-practice')
-// }
+if (process.env.NODE_ENV === 'production') {
+  // heroku mongoose connection
+  mongoose.connect('mongodb://Dnton:heaven88@ds027295.mlab.com:27295/project2')
+} else {
+  // local server
+  mongoose.connect('mongodb://localhost/project-practice')
+}
 
 app.set('view engine', 'ejs')
 app.use(layout)
